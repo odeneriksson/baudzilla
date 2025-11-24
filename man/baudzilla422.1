@@ -1,0 +1,84 @@
+.TH BAUDZILLA422 1 "2025" "Baudzilla 1.0" "RS422 Test Tool"
+.SH NAME
+baudzilla422 \- RS422 loopback and protocol test tool
+
+.SH SYNOPSIS
+.B baudzilla422
+-p <port> -l <logfile> -s <string>
+[-v] [-b <baud>] [-n <loops>] [-t <timeout>]
+[--length <bytes>]
+[--pattern ascii|hex|random|walking|checker]
+[--linecheck] [--modbus] [--iec101] [--all]
+
+.SH DESCRIPTION
+Baudzilla422 tests an RS422 port using configurable patterns, loopback
+verification, idle line noise detection, Modbus RTU probing and IEC101
+probing.
+
+Loopback mode requires TX and RX lines to be physically bridged.
+
+.SH OPTIONS
+.TP
+.B -v
+Verbose output.
+
+.TP
+.B -p <port>
+Serial port (e.g. /dev/ttyS1).
+
+.TP
+.B -l <logfile>
+Log file.
+
+.TP
+.B -s <string>
+ASCII base string for ASCII pattern.
+
+.TP
+.B -b <baud>
+Baudrate (default 9600).
+
+.TP
+.B -n <loops>
+Number of iterations.
+
+.TP
+.B -t <timeout>
+Timeout seconds.
+
+.TP
+.B --length <bytes>
+Payload length (default 64).
+
+.TP
+.B --pattern <name>
+Pattern mode: ascii hex random walking checker.
+
+.TP
+.B --linecheck
+Check idle line for noise.
+
+.TP
+.B --modbus
+Run Modbus RTU probe (unit 1, function 3).
+
+.TP
+.B --iec101
+Run IEC101 probe.
+
+.TP
+.B --all
+Enable linecheck, Modbus and IEC101.
+
+.TP
+.B -h, --help
+Show help.
+
+.SH EXAMPLE
+baudzilla422 -v -p /dev/ttyS1 -l log.txt -s "RS422" --pattern ascii --modbus --iec101
+
+.SH AUTHOR
+Written by Oden Eriksson.
+
+.SH LICENSE
+GPLv2.

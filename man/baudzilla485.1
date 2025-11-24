@@ -1,0 +1,92 @@
+.TH BAUDZILLA485 1 "2025" "Baudzilla 1.0" "RS485 Test Tool"
+.SH NAME
+baudzilla485 \- RS485 bus test and protocol probe tool
+
+.SH SYNOPSIS
+.B baudzilla485
+-p <port> -l <logfile> -s <string>
+[-v] [-b <baud>] [-n <loops>] [-t <timeout>]
+[--length <bytes>] [--pattern ascii|hex|random|walking|checker]
+[--linecheck] [--modbus] [--iec101]
+[--kernel] [--gpio <path>] [--manual-rts]
+
+.SH DESCRIPTION
+Baudzilla485 tests RS485 hardware in three modes:
+kernel RS485 driver, GPIO controlled DE pin or manual RTS toggled DE.
+
+Functions include loopback verification, idle line noise detection,
+Modbus RTU probing and IEC101 probing.
+
+.SH OPTIONS
+.TP
+.B -v
+Verbose mode.
+
+.TP
+.B -p <port>
+Serial device (e.g. /dev/ttyS2).
+
+.TP
+.B -l <logfile>
+Log file.
+
+.TP
+.B -s <string>
+ASCII test string.
+
+.TP
+.B -b <baud>
+Baudrate (default 9600).
+
+.TP
+.B -n <loops>
+Loop count.
+
+.TP
+.B -t <timeout>
+Timeout seconds.
+
+.TP
+.B --length <bytes>
+Payload length.
+
+.TP
+.B --pattern <name>
+Pattern mode: ascii hex random walking checker.
+
+.TP
+.B --linecheck
+Detect idle line noise.
+
+.TP
+.B --modbus
+Run Modbus RTU function 3 probe.
+
+.TP
+.B --iec101
+Run IEC101 probe.
+
+.TP
+.B --kernel
+Use kernel RS485 driver (default).
+
+.TP
+.B --gpio <path>
+Use GPIO controlled DE pin.
+
+.TP
+.B --manual-rts
+Use RTS as DE.
+
+.TP
+.B -h, --help
+Show help.
+
+.SH EXAMPLE
+baudzilla485 -v -p /dev/ttyS2 -l out.txt -s "485" --manual-rts --modbus --iec101
+
+.SH AUTHOR
+Written by Oden Eriksson.
+
+.SH LICENSE
+GPLv2.

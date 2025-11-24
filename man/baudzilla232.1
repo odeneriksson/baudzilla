@@ -1,0 +1,77 @@
+.TH BAUDZILLA232 1 "2025" "Baudzilla 1.0" "RS232 Test Tool"
+.SH NAME
+baudzilla232 \- RS232 bidirectional serial test tool
+
+.SH SYNOPSIS
+.B baudzilla232
+[-v] <portA> <portB> [-r] [-m] [-sf file]
+-b <baud> | --auto-baud
+-n <loops> -t <timeout>
+-l <logfile> -s <string>
+[--test-iec101]
+
+.SH DESCRIPTION
+Baudzilla232 performs bidirectional RS232 testing between two ports
+connected via a null modem cable. It sends a user defined test string
+from A to B and from B to A, measures transfer time, and logs results.
+
+Optional features include RTS/CTS flow control, modem signal display,
+multi baud rate testing and a simple IEC 60870-5-101 probe on port A.
+
+.SH OPTIONS
+.TP
+.B -v
+Verbose output.
+
+.TP
+.B -r
+Enable RTS/CTS hardware flow control.
+
+.TP
+.B -m
+Show modem control signals.
+
+.TP
+.B -sf <file>
+Write summary statistics to file.
+
+.TP
+.B -b <baud>
+Specify baudrate (9600 19200 38400 57600 115200).
+
+.TP
+.B --auto-baud
+Test all standard baudrates.
+
+.TP
+.B -n <loops>
+Number of test loops.
+
+.TP
+.B -t <timeout>
+Timeout seconds per direction.
+
+.TP
+.B -l <logfile>
+Path to log output.
+
+.TP
+.B -s <string>
+Test string to transmit.
+
+.TP
+.B --test-iec101
+Run simple IEC101 probe on port A.
+
+.TP
+.B -h, --help
+Show help and exit.
+
+.SH EXAMPLE
+baudzilla232 -v /dev/ttyS0 /dev/ttyS1 -b 9600 -n 5 -t 1 -l log.txt -s "Hello" --test-iec101
+
+.SH AUTHOR
+Written by Oden Eriksson.
+
+.SH LICENSE
+GPLv2.
