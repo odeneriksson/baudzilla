@@ -1,7 +1,9 @@
-# Baudzilla 1.0.1
+# Baudzilla 1.0
 RS232, RS422 and RS485 test suite  
 (C) Oden Eriksson  
 License: GPLv2
+
+NOTE: This whole code base was written by the help of ChatGPT
 
 Baudzilla is a complete serial line diagnostic toolkit that supports RS232,
 RS422 and RS485. It includes loopback verification, idle bus noise
